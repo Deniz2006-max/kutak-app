@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Syne', ui-sans-serif, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
+
+  --color-ink: #0c1a1c;
+  --color-ink-soft: #2a3d40;
+  --color-mist: #e6eef0;
+  --color-mist-deep: #d5e2e5;
+  --color-foam: #f4f8f8;
+  --color-teal: #0a5c5a;
+  --color-teal-deep: #074543;
+  --color-teal-bright: #1a8a86;
+  --color-saffron: #e8a317;
+  --color-saffron-deep: #c8870a;
+  --color-coral: #d4572a;
+  --color-locked: #5a6b6e;
+  --color-seat-empty: #c5d4d6;
+  --color-seat-filled: #0a5c5a;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-mist);
+    background-image:
+      radial-gradient(ellipse 90% 60% at 10% -10%, rgba(10, 92, 90, 0.14), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 95% 5%, rgba(232, 163, 23, 0.12), transparent 50%),
+      radial-gradient(ellipse 50% 40% at 50% 100%, rgba(10, 92, 90, 0.08), transparent 60%),
+      repeating-linear-gradient(
+        -12deg,
+        transparent,
+        transparent 28px,
+        rgba(10, 92, 90, 0.025) 28px,
+        rgba(10, 92, 90, 0.025) 29px
+      );
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100dvh;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .field {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in oklab, var(--color-teal) 18%, transparent);
+    background: color-mix(in oklab, var(--color-foam) 88%, white);
+    padding: 0.7rem 0.9rem;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .field:focus {
+    border-color: var(--color-teal-bright);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-teal) 22%, transparent);
+  }
+
+  .field::placeholder {
+    color: color-mix(in oklab, var(--color-ink-soft) 55%, transparent);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
